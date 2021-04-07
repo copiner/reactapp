@@ -1,0 +1,127 @@
+
+
+.copperBox{
+  width: 600px;
+  height: 400px;
+  border: 1px solid red;
+  margin: 16px auto;
+}
+
+.copperDiv{
+  display: flex;
+  justify-content:space-around;
+  width: 806px;
+  height: 416px;
+}
+
+.copperDom{
+  width:600px;
+  height: 416px;
+}
+
+.copperImg{
+  margin-top: 32px;
+  width: 180px;
+  height: 222px;
+  border: none;
+}
+
+.copperBtn{
+  width: 800px;
+  margin: 0 auto;
+  text-align: right;
+  & button{
+    margin-left: 12px;
+  }
+}
+
+.baseSelect{
+  width: 200px;
+}
+
+
+.lineItem{
+  margin-bottom: 8px;
+}
+
+/*common*/
+
+.comQuery{
+
+  & .lName{
+    display: inline-block;
+    width: 80px;
+  }
+
+  & input{
+    width: 200px;
+  }
+
+  & label{
+    margin-right: 12px;
+  }
+
+  & button{
+    margin-right: 8px;
+  }
+
+}
+
+.comModal{
+  margin: 0 auto;
+
+  & i{
+    font-style: normal;
+    display: inline-block;
+    width: 168px;
+
+    & b{
+      color: red;
+    }
+  }
+  & input{
+    width: 200px;
+  }
+
+  & input{
+    width: 200px;
+  }
+
+  & .uIcon{
+    width: 200px;
+    height: 220px;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
+  }
+
+  & .operMobile{
+    width: 200px;
+  }
+}
+
+.codeBox{
+  text-align: center;
+  & p{
+    margin: 0;
+  }
+}
+
+.comBtn{
+  display: flex;
+  justify-content:space-between;
+  border-top: 1px solid #d9d9d9;
+  padding-top:16px;
+  & button{
+    width: 200px;
+  }
+}
+
+.redText{
+  color: red;
+}
+
+.recordDtl{
+  & span{
+    padding: 12px;
+  }
+}

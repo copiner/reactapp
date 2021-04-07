@@ -1,0 +1,26 @@
+.order{
+  & i{
+    font-style: normal;
+    display: inline-block;
+    padding: 0 4px;
+    width: 82px;
+  }
+
+  & input{
+    width: 200px;
+  }
+
+}
+
+
+.orderMol{
+  & i{
+    width: 168px;
+    display: inline-block;
+    font-style: normal;
+  }
+
+  & input{
+    width: 200px;
+  }
+}

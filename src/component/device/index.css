@@ -1,0 +1,21 @@
+.device{
+
+  & input{
+    width: 200px;
+    margin-right: 16px;
+  }
+
+}
+
+
+.deviceMol{
+  & i{
+    width: 168px;
+    display: inline-block;
+    font-style: normal;
+  }
+
+  & input{
+    width: 200px;
+  }
+}

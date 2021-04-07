@@ -1,0 +1,45 @@
+
+.logo {
+  height: 32px;
+  line-height: 32px;
+  background: #fff;
+  margin: 16px;
+  color: #000;
+  font-size: 16px;
+  text-align: center;
+}
+
+.headerBg {
+  background: #fff !important;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.trigger {
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+   color: #1890ff;
+ }
+}
+
+.layoutContent{
+  margin: 24px 16px;
+  padding: 24px;
+  min-height: 640px;
+  background: #fff;
+}
+
+.drop{
+  width: 80px;
+  font-size: 16px;
+}
+
+
+.sideTips{
+  color: #ff0000;
+  text-align: center;
+}
