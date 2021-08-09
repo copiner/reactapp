@@ -6,13 +6,14 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-// const CopyPlugin = require('copy-webpack-plugin');
 
+const env = require('./dev');
 const url = "http://192.168.23.213:9002/templegm";
+
 
 module.exports = {
   mode: "development",
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: {
      app: ['./src/index.js']
   },
@@ -20,52 +21,40 @@ module.exports = {
     path: resolve(__dirname, '../build'),
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
-    publicPath:'/'
+    publicPath: './'
   },
   module: {
         rules: [
             {
                 test: /(\.jsx|\.js)$/,
                 include: resolve(__dirname, '../src'),
-                use: ['cache-loader', 'babel-loader']
+                use: {
+                    loader: "babel-loader",
+                }
             },
             {
               test: /\.(png|jpg|gif)$/,
-              exclude: /node_modules/,
-              use: [
-                // {
-                //   loader: 'file-loader',
-                //   options: {
-                //     name: '[path][name].[ext]'
-                //   }
-                // },
-                {
-                  loader: 'url-loader',
-                  options: {
-                    limit: 8*1024
-                  }
-                }
-              ]
+              type: 'asset/resource',
+              parser: {
+                 dataUrlCondition: {
+                   maxSize: 4 * 1024 // 4kb
+                 }
+               },
+              generator: {
+                 filename: 'static/[hash][ext][query]'
+              }
             },
             {
                 test: /\.css$/,
                 include: resolve(__dirname, "../src"),
                 use: [
                     {
-                      loader: MiniCssExtractPlugin.loader,
+                      loader: 'css-loader',
                       options: {
-                        hmr: true,//热更新
-                        reloadAll: true
-                      },
+                        modules: true
+                      }
                     },
-                    {
-                     loader: 'css-loader',
-                     options: {
-                         modules: true,
-                         importLoaders: 1
-                     }
-                   },
-                   { loader: 'postcss-loader' }
+                    { loader: 'postcss-loader' }
                 ]
             },
             {
@@ -80,8 +69,7 @@ module.exports = {
     },
     plugins: [
       new Webpack.DefinePlugin({
-         //'SERVICE_URL': JSON.stringify("http://192.168.23.213:9001/templegm"),
-         'SERVICE_URL': JSON.stringify("http://127.0.0.1:3000/api")
+         'process.env': env
       }),
       new HtmlWebpackPlugin({
         title: '管理系统',
@@ -90,17 +78,6 @@ module.exports = {
         favicon: "./public/favicon.ico"
       }),
       new CleanWebpackPlugin(),
-      // new CleanWebpackPlugin({
-      //   cleanOnceBeforeBuildPatterns: ['**/*', '!dll', '!dll/**'] //不删除dll目录
-      // }),
-      // new CopyPlugin({
-      //   patterns:[
-      //       {
-      //         from: resolve(__dirname, '../public/lib'),
-      //         to: resolve(__dirname, '../build/lib')
-      //       }
-      //   ]
-      // }),
       new Webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].css',
@@ -110,21 +87,17 @@ module.exports = {
       // new ESLintPlugin({
       //
       // }),
-      // new Webpack.DllReferencePlugin({
-      //   manifest:resolve(__dirname, '../build/dll', 'manifest.json')
-      // }),
       //new BundleAnalyzerPlugin()
     ],
     optimization: {
       splitChunks: {
         chunks: 'async',
-        minSize: 30000,//模块大于30k会被抽离到公共模块
-        maxSize: 0,
-        minChunks: 1,//模块出现1次就会被抽离到公共模块
-        maxAsyncRequests: 5,//异步模块，一次最多只能被加载5个
-        maxInitialRequests: 5,//入口模块最多只能加载个数
-        automaticNameDelimiter: '-',
-        name: true,
+        minSize: 20000,
+        minRemainingSize: 0,
+        minChunks: 1,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
+        enforceSizeThreshold: 50000,
         cacheGroups: {
           vendor: {
             //第三方依赖
@@ -167,8 +140,8 @@ module.exports = {
         }
       }
     },
-   devServer: {
-      contentBase: resolve(__dirname, "../build"),
+    devServer: {
+      contentBase: resolve(__dirname, "../dist"),
       publicPath:"/",
       historyApiFallback: true,
       host:"127.0.0.1",
@@ -178,6 +151,7 @@ module.exports = {
       proxy: {
          '/api': {
            target: url,
+           changeOrigin:true,
            pathRewrite: {'^/api' : ''}
          }
        }

@@ -9,20 +9,20 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// const CopyPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const env = require('./test');
 
 module.exports = {
   mode: "production",
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   entry: {
      app: ['./src/index.js']
   },
   output: {
-    path: resolve(__dirname, '../build'),
+    path: resolve(__dirname, '../dist'),
     filename: '[name].[hash].js',
     chunkFilename: '[name].[hash].js',
-    publicPath:'/temple/'
+    publicPath: './'
   },
   module: {
         rules: [
@@ -30,18 +30,12 @@ module.exports = {
                 test: /(\.jsx|\.js)$/,
                 include: resolve(__dirname, '../src'),
                 use: {
-                    loader: "babel-loader",
+                    loader: "babel-loader"
                 }
             },
             {
               test: /\.(png|jpg|gif)$/,
               use: [
-                // {
-                //   loader: 'file-loader',
-                //   options: {
-                //     name: '[path][name].[ext]'
-                //   }
-                // },
                 {
                   loader: 'url-loader',
                   options: {
@@ -59,8 +53,7 @@ module.exports = {
                   {
                    loader: 'css-loader',
                    options: {
-                     modules: true,
-                     importLoaders: 1
+                     modules: true
                    }
                  },
                  {
@@ -80,7 +73,7 @@ module.exports = {
     },
     plugins: [
          new Webpack.DefinePlugin({
-            'SERVICE_URL': JSON.stringify("http://temple.96225.com:9002/templegm")
+            'process.env': env
          }),
          new HtmlWebpackPlugin({
             title: '管理系统',
@@ -89,38 +82,23 @@ module.exports = {
             favicon: "./public/favicon.ico"
          }),
          new CleanWebpackPlugin(),
-         // new CleanWebpackPlugin({
-         //   cleanOnceBeforeBuildPatterns: ['**/*', '!dll', '!dll/**'] //不删除dll目录
-         // }),
-         // new CopyPlugin({
-         //   patterns:[
-         //       {
-         //         from: resolve(__dirname, '../public/lib'),
-         //         to: resolve(__dirname, '../build/lib')
-         //       }
-         //   ]
-         // }),
          new MiniCssExtractPlugin({
-            filename: '[name]-[hash].css',
-            chunkFilename: '[id]-[hash].css',
+            filename: './css/[name][contenthash].css',
+            chunkFilename: './css/[id][contenthash].css',
             ignoreOrder: false
           }),
-          // new Webpack.DllReferencePlugin({
-          //   manifest:resolve(__dirname, '../build/dll', 'manifest.json')
-          // }),
-          new CompressionPlugin(), //nginx gzip_static模块启用
+         new CompressionPlugin(), //nginx gzip_static模块启用
           //new BundleAnalyzerPlugin()//打包调整更新优化
      ],
      optimization: {
        splitChunks: {
          chunks: 'async',
-         minSize: 30000,//模块大于30k会被抽离到公共模块
-         maxSize: 0,
-         minChunks: 1,//模块出现1次就会被抽离到公共模块
-         maxAsyncRequests: 5,//异步模块，一次最多只能被加载5个
-         maxInitialRequests: 5,//入口模块最多只能加载个数
-         automaticNameDelimiter: '-',
-         name: true,
+         minSize: 20000,
+         minRemainingSize: 0,
+         minChunks: 1,
+         maxAsyncRequests: 30,
+         maxInitialRequests: 30,
+         enforceSizeThreshold: 50000,
          cacheGroups: {
            vendor: {
              //第三方依赖
@@ -143,14 +121,6 @@ module.exports = {
              name: "react",
              priority: 5,
              test: /[\\/]node_modules[\\/](react|react-dom|react-redux|redux|react-router|react-router-dom|redux-saga|@redux-saga)[\\/]/,
-             chunks: 'initial',
-             minSize: 100,
-             minChunks: 1
-           },
-           moment: {
-             name: "moment", //单独将echarts拆包
-             priority: 5, // 权重需大于`vendor`
-             test: /[\\/]node_modules[\\/](moment)[\\/]/,
              chunks: 'initial',
              minSize: 100,
              minChunks: 1

@@ -1,5 +1,5 @@
 
-console.log("Running App service " + SERVICE_URL);
+console.log("Running App service " + process.env.BASE_API_SEV);
 
 export default
 {

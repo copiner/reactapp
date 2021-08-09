@@ -1,14 +1,13 @@
 import axios from 'axios'
-import { message } from 'antd';
+import { message } from 'antd'
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 import Session from '../util/session'
 
 import CNF from '../config'
 
-
 axios.defaults.timeout = 16000;
-axios.defaults.baseURL = SERVICE_URL;
+axios.defaults.baseURL = process.env.BASE_API_SEV
 
 /*
 

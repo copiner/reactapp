@@ -91,8 +91,8 @@ export function* taskopenSaga(data) {
 export function* taskexportSaga(data) {
   try {
       /*
-      console.log(SERVICE_URL + rst.data)
-      window.location.href = SERVICE_URL +"/"+ rst.data;
+      console.log(process.env.BASE_API_SEV + rst.data)
+      window.location.href = process.env.BASE_API_SEV +"/"+ rst.data;
       */
       const rst = yield call(TaskServer.taskExport,data.trt);
       if(rst.code == CNF.CODE.suc){

@@ -32,9 +32,8 @@ import {
 export function* loginSaga(data) {
     try {
         const rst = yield call(LoginServer.loginIn,data.info);
-        yield put({ type: LOGIN_SUCCESS, info: null});
         if(rst.code == CNF.CODE.suc){
-          //yield put({ type: LOGIN_SUCCESS, info: rst.data });
+          yield put({ type: LOGIN_SUCCESS, info: rst.data });
         } else {
           console.error('loginsaga: '+rst.message)
         }

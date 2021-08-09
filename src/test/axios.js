@@ -24,21 +24,7 @@ const whitelist = [
   '/open'
 ]
 
-const NODE_ENV = process.env.NODE_ENV
-
-axios.defaults.withCredentials = true // 让ajax携带cookie
-// axios.defaults.timeout = 10000
-if (NODE_ENV === 'development') {
-  // axios.defaults.baseURL = 'http://dev.api.kkd.51kirin.com'
-  // axios.defaults.baseURL = 'http://39.104.68.131:10100'
-  // axios.defaults.baseURL = 'http://192.168.96.12:10100'
-  // axios.defaults.baseURL = 'http://192.168.96.14:10100'
-  axios.defaults.baseURL = 'http://192.168.23.245:10100'
-  // axios.defaults.baseURL = 'http://59061b63.ngrok.io'
-  // axios.defaults.baseURL = 'http://192.168.31.200:10100'
-} else {
-  axios.defaults.baseURL = process.env.BASE_API
-}
+axios.defaults.baseURL = process.env.BASE_API
 
 const addPrefix = (api) => {
   const prefix = '/api/bg'

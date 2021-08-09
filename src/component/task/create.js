@@ -147,7 +147,7 @@ function CreateItem(props) {
   }
 
   const loadExfile = () =>{
-    window.location.href = SERVICE_URL + CNF.TASKTMP;
+    window.location.href = process.env.BASE_API_SEV + CNF.TASKTMP;
   }
 
   return (
