@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import Session from '../util/session'
 
 import CNF from '../config'
-
+console.log('baseURL', process.env.BASE_API_SEV)
 axios.defaults.timeout = 16000;
 axios.defaults.baseURL = process.env.BASE_API_SEV;
 

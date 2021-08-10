@@ -5,11 +5,11 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
+// const ESLintPlugin = require('eslint-webpack-plugin');
 
 const env = require('./dev');
 
-const url = "http://192.168.23.176:9002/";
+const url = "http://192.168.23.176:9002/templegm";
 
 module.exports = {
   mode: "development",
@@ -18,9 +18,9 @@ module.exports = {
      app: ['./src/index.js']
   },
   output: {
-    path: resolve(__dirname, '../build'),
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
+    path: resolve(__dirname, '../dist'),
+    filename: './js/[name].[contenthash].js',
+    chunkFilename: './js/[name].[contenthash].js',
     publicPath: './'
   },
   module: {
@@ -80,13 +80,11 @@ module.exports = {
       new CleanWebpackPlugin(),
       new Webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
-        filename: '[name].css',
-        chunkFilename: '[id].css',
-        ignoreOrder: false
-      }),
-      // new ESLintPlugin({
-      //
-      // }),
+         filename: './css/[name][contenthash].css',
+         chunkFilename: './css/[id][contenthash].css',
+         ignoreOrder: false
+       }),
+      // new ESLintPlugin(),
       //new BundleAnalyzerPlugin()
     ],
     optimization: {
@@ -142,6 +140,7 @@ module.exports = {
     },
     devServer: {
       contentBase: resolve(__dirname, "../dist"),
+      publicPath: '/',
       historyApiFallback: true,
       host:"127.0.0.1",
       port: 3000,

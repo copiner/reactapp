@@ -36,6 +36,7 @@ function LoginForm(props) {
 
   const printValues = () => {
 
+
     //e.preventDefault();
     //console.log(MD5("abc").toString());
     if(login.userName && login.pwd && login.capchaCode){
@@ -73,7 +74,7 @@ function LoginForm(props) {
   };
 
   const refreshPic = () => {
-      props.lAct.signpicSt(login.codeId)
+      //props.lAct.signpicSt(login.codeId)
   }
 
   //Tabs 切换
