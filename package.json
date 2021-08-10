@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
-    "dev": "webpack serve --progress --config config/webpack.dev.js --hot",
+    "dev": "webpack serve --progress --config config/webpack.dev.js --hot-only",
     "buildtest": "webpack --config config/webpack.test.js",
     "build": "webpack --config config/webpack.pro.js"
   },

@@ -49,7 +49,7 @@ function CorrectForm(props) {
     <div className={stl.backabc}>
     <div className={stl.loginMain}>
       <div className={stl.loginAccount}>
-        <h1>密码修改</h1>
+        <h2>密码修改</h2>
         <p>
           <ComInput
             limit={ CNF.IPTLIT.username }

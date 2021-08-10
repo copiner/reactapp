@@ -48,6 +48,7 @@ module.exports = {
                 test: /\.css$/,
                 include: resolve(__dirname, "../src"),
                 use: [
+                    { loader: "style-loader" },
                     {
                       loader: 'css-loader',
                       options: {
@@ -78,7 +79,8 @@ module.exports = {
         favicon: "./public/favicon.ico"
       }),
       new CleanWebpackPlugin(),
-      new Webpack.HotModuleReplacementPlugin(),
+      //If webpack or webpack-dev-server are launched with the --hot option, this plugin will be added automatically
+      // new Webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
          filename: './css/[name][contenthash].css',
          chunkFilename: './css/[id][contenthash].css',
@@ -138,6 +140,7 @@ module.exports = {
         }
       }
     },
+    target:"web",
     devServer: {
       contentBase: resolve(__dirname, "../dist"),
       publicPath: '/',
