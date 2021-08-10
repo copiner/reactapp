@@ -1,3 +1,6 @@
+/*
+白名单
+*/
 import React, { useState,useEffect,useMemo } from 'react';
 import { DatePicker, Button, Input, Space,Modal, message  } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -14,7 +17,7 @@ import stl from '../common/index.css'
 
 function Allowed(props) {
 
-  //console.log(props)
+  console.log(props)
   const { visible, hideModal, openModal } = useModalVisible();
 
   let init = { custName: "",custIdNo: "", mobile: "", cdate:[] ,startTime:"",endTime:"", pageNum:"1", pageSize:"10" };
@@ -102,6 +105,7 @@ function Allowed(props) {
       props.allowAct.allowSt(query)
     }
   },[props.allowList.succ])
+
 
   return (
       <div className={stl.comQuery}>

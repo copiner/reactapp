@@ -14,7 +14,7 @@ import stl from './index.css'
 import { useInterval } from '../common/counter';
 
 function LoginForm(props) {
-
+  
   const [delay, setDelay] = useState(null);//定时器，并设置时间 null值暂停计时器
 
   let { codeImg, codeId } = props.login.pic;
@@ -88,7 +88,7 @@ function LoginForm(props) {
   }
 
   return (
-    <div className={stl.backabc}>
+    <div className={stl.locals.backabc}>
     <div className={stl.loginMain}>
       <Tabs defaultActiveKey="1" onChange={tabkey}>
         <Tabs.TabPane tab="账密登陆" key="1">

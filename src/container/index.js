@@ -22,6 +22,7 @@ class Index extends Component {
 
 
   render() {
+
     let { status, correct, info, menu } = this.props.login;//state
     let { lAct } = this.props;//action
 

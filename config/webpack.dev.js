@@ -8,8 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const env = require('./dev');
-const url = "http://192.168.23.213:9002/templegm";
 
+const url = "http://192.168.23.176:9002/";
 
 module.exports = {
   mode: "development",
@@ -142,11 +142,9 @@ module.exports = {
     },
     devServer: {
       contentBase: resolve(__dirname, "../dist"),
-      publicPath:"/",
       historyApiFallback: true,
       host:"127.0.0.1",
       port: 3000,
-      inline: true,
       hot: true,
       proxy: {
          '/api': {

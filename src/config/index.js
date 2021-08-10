@@ -66,7 +66,6 @@ export default
   },
   TASKTMP:"/template/TempleGroup.xlsx",//团购任务模板下载
   SOCKET:"ws://localhost:22225",
-  BASENAME:"/temple",
   LOCAL:"/api",
   //SYS:env==="development"?"http://192.168.23.213:9001/templegm":"http://12345.12345.com:9002/templegm"
 }

@@ -1,3 +1,4 @@
+
 .backabc{
   background-color: #d9d9d9;
   background-size:100% 100%;
@@ -6,6 +7,7 @@
   justify-content:center;
   align-items: center;
 }
+
 .loginMain{
   padding: 12px;
   /* border: 1px solid red; */

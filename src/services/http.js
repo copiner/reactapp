@@ -7,7 +7,7 @@ import Session from '../util/session'
 import CNF from '../config'
 
 axios.defaults.timeout = 16000;
-axios.defaults.baseURL = process.env.BASE_API_SEV
+axios.defaults.baseURL = process.env.BASE_API_SEV;
 
 /*
 

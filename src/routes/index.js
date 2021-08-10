@@ -7,19 +7,19 @@ import { UserOutlined,VideoCameraOutlined,UploadOutlined,MailOutlined } from '@a
 const Home = loadable((props) => import(/* webpackChunkName: "counter" */'../container/home'))
 //import CNF from '../config'
 export const routeEnum = {
-  "m010100":"/temple/sail",
-  "m010200":"/temple/allowed",
-  "m010300":"/temple/kind",
-  "m010400":"/temple/temple",
-  "m010500":"/temple/device",
-  "m020100":"/temple/task",
-  "m020200":"/temple/detail",
-  "m030100":"/temple/order",
-  "m030200":"/temple/record",
-  "m030300":"/temple/summary",
-  "m030400":"/temple/channel",
-  "m040100":"/temple/user",
-  "m040200":"/temple/role"
+  "m010100":"/sail",
+  "m010200":"/allowed",
+  "m010300":"/kind",
+  "m010400":"/temple",
+  "m010500":"/device",
+  "m020100":"/task",
+  "m020200":"/detail",
+  "m030100":"/order",
+  "m030200":"/record",
+  "m030300":"/summary",
+  "m030400":"/channel",
+  "m040100":"/user",
+  "m040200":"/role"
 }
 
 export const routesList = [
@@ -33,7 +33,7 @@ export const routesList = [
       {
         id:'m010100',
         title:"常用业务",
-        path: '/temple/sail',
+        path: '/sail',
         extra: {
           ant: true
         },
@@ -43,7 +43,7 @@ export const routesList = [
       {
         id:'m010200',
         title:"白名单",
-        path: '/temple/allowed',
+        path: '/allowed',
         exact: true,
         status:false,
         component: loadable(() => import(/* webpackChunkName: "allow" */"../container/allow"))
@@ -51,7 +51,7 @@ export const routesList = [
       {
         id:'m010300',
         title:"银行卡类别",
-        path: '/temple/kind',
+        path: '/kind',
         exact: true,
         status:false,
         component: loadable(() => import(/* webpackChunkName: "kind" */'../container/kind'))
@@ -59,7 +59,7 @@ export const routesList = [
       {
         id:'m010400',
         title:"园区管理",
-        path: '/temple/temple',
+        path: '/temple',
         exact: true,
         status:false,
         component: loadable(() => import(/* webpackChunkName: "temple" */'../container/temple'))
@@ -67,7 +67,7 @@ export const routesList = [
       {
         id:'m010500',
         title:"设备管理",
-        path: '/temple/device',
+        path: '/device',
         exact: true,
         status:false,
         component: loadable(() => import(/* webpackChunkName: "device" */'../container/device'))
@@ -83,13 +83,13 @@ export const routesList = [
     {
       id:'m020100',
       title:"团购任务",
-      path: '/temple/task',
+      path: '/task',
       status:false,
       component: loadable(() => import(/* webpackChunkName: "task" */'../container/task'))
     },{
       id:'m020200',
       title:"团购明细",
-      path: '/temple/detail',
+      path: '/detail',
       status:false,
       component: loadable(() => import(/* webpackChunkName: "detail" */'../container/detail'))
     },
@@ -104,21 +104,21 @@ export const routesList = [
     {
       id:'m030100',
       title:"订单管理",
-      path: '/temple/order',
+      path: '/order',
       exact: true,
       status:false,
       component: loadable(() => import(/* webpackChunkName: "order" */"../container/order"))
     },{
       id:'m030200',
       title:"园区记录",
-      path: '/temple/record',
+      path: '/record',
       exact: true,
       status:false,
       component: loadable(() => import(/* webpackChunkName: "record" */"../component/record"))
     },{
       id:'m030300',
       title:"工作统计",
-      path: '/temple/summary',
+      path: '/summary',
       exact: true,
       status:false,
       component: loadable(() => import(/* webpackChunkName: "summary" */'../component/summary')),
@@ -141,7 +141,7 @@ export const routesList = [
     },{
       id:'m030400',
       title:"渠道管理",
-      path: '/temple/channel',
+      path: '/channel',
       exact: true,
       status:false,
       component: loadable(() => import(/* webpackChunkName: "channel" */'../container/channel'))
@@ -157,14 +157,14 @@ export const routesList = [
     {
       id:'m040100',
       title:"用户管理",
-      path: '/temple/user',
+      path: '/user',
       exact: true,
       status:false,
       component: loadable(() => import(/* webpackChunkName: "user" */'../container/user'))
     },{
       id:'m040200',
       title:"角色管理",
-      path: '/temple/role',
+      path: '/role',
       exact: true,
       status:false,
       component: loadable(() => import(/* webpackChunkName: "role" */"../container/role"))

@@ -20,8 +20,8 @@ module.exports = {
   },
   output: {
     path: resolve(__dirname, '../dist'),
-    filename: '[name].[hash].js',
-    chunkFilename: '[name].[hash].js',
+    filename: './js/[name].[contenthash].js',
+    chunkFilename: './js/[name].[contenthash].js',
     publicPath: './'
   },
   module: {
@@ -113,6 +113,14 @@ module.exports = {
              name: "antd", // 单独将antd拆包
              priority: 5, // 权重需大于`vendor`
              test: /[\\/]node_modules[\\/](antd|@ant-design|rc-menu|rc-trigger|rc-field-form|rc-tabs|rc-dropdown|rc-align|rc-motion|rc-notification|rc-animate|rc-util|rc-tooltip|rc-textarea)[\\/]/,
+             chunks: 'initial',
+             minSize: 100,
+             minChunks: 1
+           },
+           moment: {
+             name: "moment", //单独将echarts拆包
+             priority: 5, // 权重需大于`vendor`
+             test: /[\\/]node_modules[\\/](moment)[\\/]/,
              chunks: 'initial',
              minSize: 100,
              minChunks: 1
