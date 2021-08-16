@@ -11,13 +11,13 @@ module.exports = {
         useBuiltIns:"usage"
     }],
     ["@babel/preset-react",{
-         useBuiltIns:true
+         runtime: "automatic"
     }]
   ],
   plugins : [
      ["@babel/plugin-proposal-class-properties"],
      ["@babel/plugin-transform-react-jsx", {
-        useBuiltIns:true
+        runtime: "automatic"
       }],
      ["@babel/plugin-transform-runtime",{
        corejs:3
