@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Link, useHistory } from 'react-router-dom';
 import { Modal, Radio, Button, message } from 'antd';
 import loadable from "@loadable/component";
-
+import moment from 'moment';
 import CpServer from '../../services/cp';
 import HomeServer from '../../services/home';
 
@@ -30,7 +30,7 @@ function Detail(props) {
   const bindBound = e =>{
     setBili(e.target.name)
 
-    let curr = new Date().Format("yyyy-MM-dd hh:mm:ss");
+    let curr = moment().format('YYYY-MM-DD HH:mm:ss');
 
     if(!info.custIdNo){
       message.error("无法获取用户证件号码，请查询后重试！")

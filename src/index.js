@@ -6,15 +6,17 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 
 import zhCN from 'antd/es/locale/zh_CN';
-import moment from 'moment';
-import 'moment/locale/zh-cn';
 
+import moment from 'moment';
+// import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
+//console.log(moment.locales())
 
 import configureStore from './store';
 const store = configureStore();
 
-import "./index.css"
+import "./main.css"
+
 import App from './container';
 
 let render = () => {

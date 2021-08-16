@@ -9,6 +9,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const env = require('./pro');
 
@@ -90,6 +91,9 @@ module.exports = {
           }),
           new CompressionPlugin(), //nginx gzip_static模块启用
           //new BundleAnalyzerPlugin()//打包调整更新优化
+          new MomentLocalesPlugin({
+            localesToKeep: ['es-us', 'zh-cn'],
+          }),
      ],
      optimization: {
        splitChunks: {

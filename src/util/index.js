@@ -445,9 +445,7 @@ export function downFileAtFront (base64Str, filename, type){
   window.URL.revokeObjectURL(a.href);
   a.remove();
 
-
-  //GET请求方式
-
+  //后端返回流的方式
   // let url = window.URL.createObjectURL(new Blob([res.data]));
   // let link = document.createElement("a");
   // link.style.display = "none";

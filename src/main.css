@@ -1,4 +1,6 @@
-
+/*
+antd table  禁止中文换行
+*/
 table td,
 table th{
   word-break: keep-all;

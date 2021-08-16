@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 import { Switch, Route, Redirect} from 'react-router-dom';
 import { Layout, message } from 'antd';
 
-import "../util/proto";  //引入日期原型
+// import "../util/proto";  //引入日期原型
+// import "../util/corejs";  //corejs3 demo
 
 import * as lAct from '../actions/login';
 

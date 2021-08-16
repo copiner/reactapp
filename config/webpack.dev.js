@@ -6,6 +6,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //const ESLintPlugin = require('eslint-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const env = require('./dev');
 
@@ -87,7 +88,10 @@ module.exports = {
          ignoreOrder: false
        }),
       // new ESLintPlugin(),
-      //new BundleAnalyzerPlugin()
+      //new BundleAnalyzerPlugin(),
+      new MomentLocalesPlugin({
+        localesToKeep: ['es-us', 'zh-cn'],
+      })
     ],
     optimization: {
       splitChunks: {

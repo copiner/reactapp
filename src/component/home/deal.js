@@ -3,6 +3,7 @@
 */
 import React, { useState,useEffect } from 'react';
 import { Radio, Button,Select, Input, Modal, message  } from 'antd';
+import moment from 'moment';
 
 import ComInput from '../common/bipt'
 import BaseSelect from '../common/bslt'
@@ -115,7 +116,7 @@ function Deal(props) {
 
           message.success('办理成功！', 5);
           let validDate = props.card.validDate.length==8?props.card.validDate.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3"):props.card.validDate;
-          let curr = new Date().Format("yyyy-MM-dd hh:mm:ss");
+          let curr = moment().format('YYYY-MM-DD HH:mm:ss');
           let obj = {
             busiType:"开通续费",
             custName:info.custName,

@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Button, Radio, Select,Modal, message } from 'antd';
+import moment from 'moment';
 
 import CpServer from '../../services/cp';
 import HomeServer from '../../services/home';
@@ -76,7 +77,7 @@ function Print(props) {
 
 
           //2.默认打印小票
-          let curr = new Date().Format("yyyy-MM-dd hh:mm:ss");
+          let curr = moment().format('YYYY-MM-DD HH:mm:ss');
           let obj = {
             busiType:"打印银行卡片",
             custName:info.custName,

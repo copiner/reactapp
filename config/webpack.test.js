@@ -10,6 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const CompressionPlugin = require('compression-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+
 const env = require('./test');
 
 module.exports = {
@@ -81,14 +83,17 @@ module.exports = {
             filename: "index.html",
             favicon: "./public/favicon.ico"
          }),
-         new CleanWebpackPlugin(),
-         new MiniCssExtractPlugin({
-            filename: './css/[name][contenthash].css',
-            chunkFilename: './css/[id][contenthash].css',
-            ignoreOrder: false
-          }),
-         new CompressionPlugin(), //nginx gzip_static模块启用
-          //new BundleAnalyzerPlugin()//打包调整更新优化
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+          filename: './css/[name][contenthash].css',
+          chunkFilename: './css/[id][contenthash].css',
+          ignoreOrder: false
+        }),
+        new CompressionPlugin(), //nginx gzip_static模块启用
+          //new BundleAnalyzerPlugin(),//打包调整更新优化
+        new MomentLocalesPlugin({
+          localesToKeep: ['es-us', 'zh-cn'],
+        })
      ],
      optimization: {
        splitChunks: {
