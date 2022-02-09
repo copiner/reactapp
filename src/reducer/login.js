@@ -38,7 +38,10 @@ let initstatus = {
     qrcodeId : "",
     qrcode : ""
   },
-  menu:[]
+  menu:[],
+  error:{
+      
+  }
 
 }
 

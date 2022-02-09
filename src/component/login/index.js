@@ -14,11 +14,17 @@ import stl from './index.css'
 import { useInterval } from '../common/counter';
 
 function LoginForm(props) {
-  console.log(props)
+
+  let { error } = props.login;
+  if(error.code){
+      //message.error(error.message)
+  }
+
   const [delay, setDelay] = useState(null);//定时器，并设置时间 null值暂停计时器
 
   let { codeImg, codeId } = props.login.pic;
-  const [login, setLogin] = useState({ userName: "",pwd: "",codeId:"any", capchaCode:"any" });
+  const [login, setLogin] = useState({ userName: "",pwd: "",codeId:"abc", capchaCode:"cbb" });
+  const [disable, setDisable] = useState(true);//提交按钮状态
 
   useEffect(() => {
       props.lAct.signpicSt()
@@ -35,7 +41,6 @@ function LoginForm(props) {
   }, [codeId]);
 
   const printValues = () => {
-
 
     //e.preventDefault();
     //console.log(MD5("abc").toString());
@@ -76,6 +81,14 @@ function LoginForm(props) {
   const refreshPic = () => {
       props.lAct.signpicSt(login.codeId)
   }
+
+  useEffect(() => {
+    if(login.userName && login.pwd && login.capchaCode){
+        setDisable(false)
+    } else {
+        setDisable(true)
+    }
+  }, [login]);
 
   //Tabs 切换
   const tabkey = (key) => {
@@ -129,7 +142,7 @@ function LoginForm(props) {
             </p>
 
             <p>
-              <Button type="primary" block onKeyDown={enterValues} onClick={printValues} >确认</Button>
+              <Button type="primary"  disabled={disable} block onKeyDown={enterValues} onClick={printValues} >确认</Button>
             </p>
           </div>
         </Tabs.TabPane>

@@ -10,7 +10,7 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const env = require('./dev');
 
-const url = "http://192.168.23.176:9002/templegm";
+const url = "http://192.168.23.213:8089/templegm";
 
 module.exports = {
   mode: "development",
@@ -150,7 +150,7 @@ module.exports = {
       publicPath: '/',
       historyApiFallback: true,
       host:"127.0.0.1",
-      port: 3000,
+      port: 9000,
       hot: true,
       proxy: {
          '/api': {

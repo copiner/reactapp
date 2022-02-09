@@ -16,7 +16,7 @@ import { useModalVisible } from '../common/modal';
 import stl from '../common/index.css'
 
 function Allowed(props) {
-
+  console.log(props)
   const { visible, hideModal, openModal } = useModalVisible();
 
   let init = { custName: "",custIdNo: "", mobile: "", cdate:[] ,startTime:"",endTime:"", pageNum:"1", pageSize:"10" };

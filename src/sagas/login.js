@@ -33,12 +33,15 @@ export function* loginSaga(data) {
     try {
         const rst = yield call(LoginServer.loginIn,data.info);
         if(rst.code == CNF.CODE.suc){
+          //业务逻辑
           yield put({ type: LOGIN_SUCCESS, info: rst.data });
         } else {
-          console.error('loginsaga: '+rst.message)
+          //业务逻辑
+          //message.error('loginsaga: '+rst.message)
+          yield put({ type: LOGIN_FAIL, error: rst });
         }
     } catch(e) {
-        console.error('loginsaga: '+e)
+        console.log('loginsaga: '+e)
     }
 }
 

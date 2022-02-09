@@ -1,5 +1,13 @@
 ### admin manager
+#### dependencies
 
+webpack
+
+antd design
+
+react react-router redux
+
+redux-saga
 
 ### Build Setup
 
@@ -16,11 +24,3 @@ npm run build
 # build for test
 npm run buildtest
 ```
-
-### dependencies
-
-webpack
-
-antd design
-
-react react-router redux redux-saga

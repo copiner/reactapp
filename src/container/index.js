@@ -44,7 +44,43 @@ const mapStateToProps  = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  lAct: bindActionCreators(lAct, dispatch)
+  lAct: bindActionCreators(lAct, dispatch),
+
+    // loginSt: (lay) => dispatch(loginSt(lay)),
+    // logoutSt: (lay) => dispatch(logoutSt(lay)),
+    // correctSt: (lay) => dispatch(correctSt(lay)),
+    // correctMid: (lay) => dispatch(correctMid(lay))
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Index);
+
+/*
+// //将store.dispatch方法挂载到props上
+ const mapDispatchToProps =(dispatch)=> {
+   return {
+     onPickerChange (date, dateString) {
+         let obj={
+           beginDate: dateString[0],
+           endDate: dateString[1],
+         }
+         axios
+         .post("safemgmt/api/queryDeviceInfos",
+         {
+           deviceType:"MOBILE",
+           ...obj
+         },
+          .then(res=>{
+           if(res.data.code==="0"){
+             const data = res.data.result.list
+             const action = {
+               type: 'get_params',
+               tableListdata: data
+             }
+             dispatch(action)
+           }
+         })
+
+     }
+   }
+ }
+*/
