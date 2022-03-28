@@ -34,8 +34,8 @@ let render = () => {
 
 render();
 
-if(module.hot) {
-  module.hot.accept(['./container'], () => {
-    render()
-  })
-}
+// if(module.hot) {
+//   module.hot.accept(['./container'], () => {
+//     render()
+//   })
+// }
